@@ -1,85 +1,81 @@
-= poliqarpr
+# poliqarpr
 
-* http://github.com/apohllo/poliqarpr
+http://github.com/apohllo/poliqarpr
 
-== DESCRIPTION:
+# DESCRIPTION:
 
 Poliqarpr is Ruby client for Poliqarp server.
 
 
-== FEATURES/PROBLEMS:
+# FEATURES/PROBLEMS:
 
-* built-in pagination of query results
-* support for lemmatization 
-* asynchronous communication might be not stable (100% CPU ussage)
-* only partial implementation of server protocol:
-** PING, VERSION
-** MAKE-SESSION, CLOSE-SESSION
-** OPEN (corpus), CLOSE (corpus)
-** CORPUS-STATS, GET-TAGSET
-** STATUS, CANCEL (used internally)
-** MAKE-QUERY, RUN-QUERY, BUFFER-STATE (used internally)
-** GET-RESULTS, GET-CONTEXT, METADATA
-** SET: lemmata, tags 
+- built-in pagination of query results
+- support for lemmatization 
+- asynchronous communication might be not stable (100% CPU ussage)
+- only partial implementation of server protocol:
+	- PING, VERSION
+	- MAKE-SESSION, CLOSE-SESSION
+	- OPEN (corpus), CLOSE (corpus)
+	- CORPUS-STATS, GET-TAGSET
+	- STATUS, CANCEL (used internally)
+	- MAKE-QUERY, RUN-QUERY, BUFFER-STATE (used internally)
+	- GET-RESULTS, GET-CONTEXT, METADATA
+	- SET: lemmata, tags 
 
-== SYNOPSIS:
+# SYNOPSIS:
 
 Poliqarpr is Ruby client for Poliqarp corpus server (see
 http://poliqarp.sourceforge.net/), which is used to store large texts used in
 Natural Language Processing.
- 
 
-== REQUIREMENTS:
+# REQUIREMENTS:
 
 Poliqarp server (only C implementation http://poliqarp.sourceforge.net/)
 
-== INSTALL:
- 
+# INSTALLATION:
 You need RubyGems v. 1.2 
-
-* gem -v 
-* 1.2.0 #=> ok
+`gem -v`
+`1.2.0 #=> ok`
 
 You need the gemcutter.org repository to be added to your sources list:
-
-* gem sources -a http://gemcutter.org
+`gem sources -a http://gemcutter.org`
 
 Then you can type:
-
-* sudo gem install poliqarpr
+`sudo gem install poliqarpr`
 
 You can install the optional default corpus (warning: it is distributed under
 different license!):
 
-* sudo gem install poliqarpr-corpus
+`sudo gem install poliqarpr-corpus`
 
-== BASIC USAGE: 
+# BASIC USAGE: 
 
 (You need the poliqarpr-corpus to be installed for this to work. See the last
 step of installation process).
 
 Require the gem:
-
-  require 'poliqarpr'
+```ruby
+require 'poliqarpr'
+```
 
 Create the server client and open default corpus
-
+```ruby
   client = Poliqarp::Client.new
   client.open_corpus :default
-
+```
 Query the corpus for given segment
-  
+```ruby  
   result = client.find("kot")
   result[0].to_s 
-
+```
 Remember to close the client on exit
-  
+```ruby  
   client.close
-
+```
 NOTE: If you wish to run the specs, you need the 'default' and '2.sample.30'
 corpuses.
 
-== LICENSE:
+# LICENSE:
  
 (The MIT License)
 
@@ -104,6 +100,6 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-== FEEDBACK
+# FEEDBACK
 
-* mailto:apohllo@o2.pl
+> mailto:apohllo@o2.pl
